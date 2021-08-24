@@ -1,1 +1,2 @@
-# ITM352_F2021
+# ITM352 Fall 2021 Class Repo
+Check back here often for labs and other materials as we create them.
