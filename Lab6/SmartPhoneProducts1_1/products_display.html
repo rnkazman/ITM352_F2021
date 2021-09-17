@@ -9,6 +9,8 @@
     <style id="localStyle"></style>
     <script>
         const store_name = "Rick Kazman";
+        var hits = 10;
+        var spins = 100;
     </script>
     
 </head>
@@ -18,13 +20,30 @@
         <script>
             document.write(store_name);
         </script>'s Used Smart Phone Store</h1>
+          <p style="text-align: center; font-weight: bold;">
+            Hits:<span id="hits_span">0</span>
+            Spins:<span id="spins_span">0</span>
+            Hits/Spins:<span id="hit_spin_span">0</span>
+            </p>
+
 </header>   
     
     <input id='speedSlider' type='range' min=".1" max="5" step=".1" style="direction: rtl;"
     onchange="localStyle.innerHTML = '.rotate img {animation-duration: ' + speedSlider.value + 's;}';"
     >
     <div><main>
-        <section class="item" onmouseover="className='item rotate' " onclick="className='item' ">
+        <section class="item" 
+            onmouseover="
+                spins = spins + 1;
+                spins_span.innerHTML = spins;
+                this.className = 'item rotate';
+                hit_spin_span.innerHTML = (hits_span.innerHTML/spins_span.innerHTML).toFixed(2);
+            " 
+            onclick="
+                hits = hits + 1;
+                hits_span.innerHTML = hits; 
+                this.className='item';
+            ">
         <h2>HTC</h2>
         <p>&dollar; 40.00</p>
         <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg" alt="photo"></img>
