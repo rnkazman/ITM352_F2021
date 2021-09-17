@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<<device-width>>, initial-scale=1.0">
+    <title>Smartphones</title>
+    <link rel="stylesheet" href="products-style.css">
+    <style id="localStyle"></style>
+    <script>
+        const store_name = "Rick N. Kazman";
+    
+    </script>
+    
+</head>
+
+<body>
+<header>
+    <h1 id="myHead">
+        <script>
+            var hits = 10;
+            var spins = 20;
+            document.write(store_name);
+        </script>'s Used Smart Phone Store</h1>
+       <p>
+           Hits:<span id="hits_span"> 0</span>
+           Spins:<span id="spins_span"> 0</span>
+       </p>
+        
+     
+        
+</header>   
+    
+    <input id='speedSlider' type='range' min=".1" max="5" step=".1" style="direction: rtl;"
+    onchange="localStyle.innerHTML = '.rotate img {animation-duration: ' + speedSlider.value + 's;}';"
+    >
+    <div><main>
+        <section class="item" onmouseover="
+            className='item rotate' 
+            spins = spins + 1;
+            spins_span.innerHTML = spins;
+        " onclick="className='item' ">
+        <h2>HTC</h2>
+        <p>&dollar; 40.00</p>
+        <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg" alt="photo"></img>
+    </section>
+    <section class="item" onmouseover="className='item rotate' " onclick="className='item' ">
+        <h2>Apple</h2>
+        <p>&dollar; 75.00</p>
+        <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg" alt="photo"></img>
+    </section>
+    <section class="item" onmouseover="className='item rotate' " onclick="className='item' ">
+        <h2>Nokia</h2>
+        <p>&dollar; 35.00</p>
+        <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg" alt="photo"></img>
+    </section>
+    <section class="item" onmouseover="className='item rotate' " onclick="className='item' ">
+        <h2>Samsung</h2>
+        <p>&dollar; 45.00</p>
+        <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg" alt="photo"></img>
+    </section>
+    <section class="item" onmouseover="className='item rotate' " onclick="className='item' ">
+        <h2>Blackberry</h2>
+        <p>&dollar; 10.00</p>
+        <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg" alt="photo"></img>
+    </section>
+</main></div>
+
+<p class="quote"></p>
+
+<h2>Your one-stop phone shop</h2>
+</body>
+</html>
