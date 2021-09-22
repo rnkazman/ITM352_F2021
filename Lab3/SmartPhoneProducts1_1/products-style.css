@@ -28,6 +28,11 @@ main {
     background-repeat: no-repeat;
 }
 
+header {
+  border: 5px solid black;
+  
+}
+
 div {
     border: 5px solid black;
     display: flex;
