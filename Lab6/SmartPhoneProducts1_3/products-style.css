@@ -1,0 +1,48 @@
+/* General */
+body {
+    width: 800px; 
+    margin: 0 auto;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+/* Layout */
+main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    background-image: url("images/phone_globe.jpg");
+    background-repeat: no-repeat;
+}
+
+div {
+    border: 5px solid black;
+    display: flex;
+}
+
+.rotate img
+{
+  animation: rotation .3s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
