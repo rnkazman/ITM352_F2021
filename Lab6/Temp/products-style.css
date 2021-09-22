@@ -40,10 +40,9 @@ header {
 footer {
   border: 5px solid black;
   border-top: 0;
-  color: rgb(52, 47, 94);
 }
 
-footer h1 {
+header h1 {
   font-style: italic;
   font-size: 3rem;
 }
