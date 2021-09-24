@@ -42,18 +42,16 @@
     <div>
         <main>
             <section class="item" onmouseover="            
-        //    if(this.className=='item') { 
                 spins_span.innerHTML = ++spins;
                 this.className = 'item rotate';
-          //  }
             // -- Winning progress depends on hits/spins
-            hits_spins_ratio = hits/spins;
+                  hits_spins_ratio = hits/spins;
             if ( hits_spins_ratio > 0 && hits_spins_ratio < 0.25 ) {
                 progress = 'On your way!';
             }
             else if ( hits_spins_ratio >= 0.25 && hits_spins_ratio < 0.5 ) {
                     progress = 'Almost there!';
-            }
+                    }
             else if ( hits_spins_ratio >= 0.5 ) {
                         if( hits < spins) { 
                             progress = 'You win!';
@@ -66,12 +64,8 @@
             over_half ||= ( (hits_spins_ratio > 0.5) && (hits < spins) )
             win_span.innerHTML = progress;
                 " onclick="
-           // if(this.className.includes('rotate')) { 
                 hits_span.innerHTML = ++hits; 
                 this.className='item';
-        //    } else {
-        //        this.className = 'item rotate';
-        //    }
                 hit_spin_span.innerHTML = (hits/spins).toFixed(2);
                 over_half ||= ( (hits/spins >= 0.5) && (hits < spins) )
                 win_span.innerHTML = over_half;
