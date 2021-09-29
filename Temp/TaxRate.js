@@ -7,7 +7,10 @@ switch (state) {
     tax_rate = 0.04172;
     break;
   case 'VT':
-    tax_rate = 0.03;
+    tax_rate = 0.06;
+    break;
+  case 'AZ':
+    tax_rate = 0.05;
     break;
   default:
     tax_rate = -1;
