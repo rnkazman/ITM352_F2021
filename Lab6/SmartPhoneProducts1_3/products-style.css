@@ -1,14 +1,16 @@
 /* General */
+
 body {
-    width: 800px; 
-    margin: 0 auto;
+  width: 800px; 
+  margin: 0 auto;
+    text-align: center;
+    background: orange;
 }
 
 img {
     width: 200px;
     height: 200px;
     border: 1px solid #ddd;
-
 }
 
 h1 {
