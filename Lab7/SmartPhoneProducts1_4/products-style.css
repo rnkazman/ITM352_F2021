@@ -1,14 +1,16 @@
 /* General */
+
 body {
-    width: 800px; 
-    margin: 0 auto;
+  width: 800px; 
+  margin: 0 auto;
+    text-align: center;
+    background: orange;
 }
 
 img {
     width: 200px;
     height: 200px;
     border: 1px solid #ddd;
-
 }
 
 h1 {
@@ -28,10 +30,6 @@ main {
     background-repeat: no-repeat;
 }
 
-header, aside, main, footer {
-  padding: 20px;
-}
-
 header {
   border: 5px solid black;
   border-bottom: 0;
@@ -42,10 +40,6 @@ footer {
   border-top: 0;
 }
 
-header h1 {
-  font-style: italic;
-  font-size: 3rem;
-}
 
 div {
     border: 5px solid black;

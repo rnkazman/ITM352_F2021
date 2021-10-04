@@ -25,11 +25,14 @@
             var store_name = "<p style=font-size:300%>" + "<B>" + first_name + "</b> <i>" + last_name +
                 "'s</p><p style=font-size:200%> Used Smart Phone Store!</p>";
             document.write(store_name);
+            over_half = false;
+
         </script>
         <p>
             Hits:<span id="hits_span"> 0</span>
             Spins:<span id="spins_span"> 0</span>
             Hit/Spin:<span id="hit_spin_span"> 0</span>
+            You win:<span id="win_span">pending...</span>
         </p>
 
         <input id='speedSlider' type='range' min=".1" max="5" step=".1" style="direction: rtl;"
@@ -40,18 +43,39 @@
     <div>
         <main>
             <section class="item" onmouseover="
-            className='item rotate' 
-            //spins++;
-            spins += 1;
+            spins++;
+            this.className='item rotate' ;
+
+            // -- Winning progress depends on hits/spins
+            hits_spins_ratio = hits/spins;
+            if ( hits_spins_ratio > 0 ) {
+                progress = 'On your way!';
+                if ( hits_spins_ratio >= 0.25 ) {
+                    progress = 'Almost there!';
+                    if ( hits_spins_ratio >= 0.5 ) {
+                        if( hits < spins) { 
+                            progress = 'You win!';
+                        }
+                    }
+                }
+            }
+            else {
+                progress = 'Get going!' ;
+            }
+
             spins_span.innerHTML = spins;
-            temp = hits/spins;
-            hit_spin_span.innerHTML = temp.toFixed(2);
+            ratio = hits/spins;
+            hit_spin_span.innerHTML = ratio.toFixed(2);
+            if (ratio > 0.5) {
+                over_half = true;
+            }
+            win_span.innerHTML = progress;
         " onclick="
-            hits += 1;
+            hits++;
             hits_span.innerHTML = hits;
-            temp = hits/spins;
-            hit_spin_span.innerHTML = temp.toFixed(2);
-            className='item' 
+            ratio = hits/spins;
+            hit_spin_span.innerHTML = ratio.toFixed(2);
+            this.className='item' ;
             ">
                 <h2>HTC</h2>
                 <p>&dollar; 40.00</p>
