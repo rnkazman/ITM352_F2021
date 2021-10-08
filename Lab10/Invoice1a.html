@@ -1,0 +1,161 @@
+<script>
+    //Product Data
+
+    var product1 = {
+        "name": "Gillette Sensor 3 Razor",
+        "quantity": 2,
+        "image": "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg",
+        "SKU#": "1234",
+        "price": 1.23
+    }
+
+    // Product 1 
+    var item1 = 'Gillette Sensor 3 Razor';
+    var quantity1 = 2;
+    var price1 = 1.23;
+    // Product 2
+    var item2 = 'Barbasol Shaving Cream';
+    var quantity2 = 1;
+    var price2 = 2.64;
+    // Product 3
+    var item3 = 'Nautica Cologne';
+    var quantity3 = 1;
+    var price3 = 6.17;
+    // Product 4
+    var item4 = 'Rubbing Alcohol';
+    var quantity4 = 3;
+    var price4 = 0.98;
+    // Product 5
+    var item5 = 'Colgate Classic Toothbrush';
+    var quantity5 = 12;
+    var price5 = 1.89;
+
+    // Extended prices
+
+    var extended_prices1 = quantity1 * price1;
+    var extended_prices2 = quantity2 * price2;
+    var extended_prices3 = quantity3 * price3;
+    var extended_prices4 = quantity4 * price4;
+    var extended_prices5 = quantity5 * price5;
+
+    // Compute extended prices
+    var subtotal = extended_prices1 + extended_prices2 + extended_prices3 + extended_prices4 + extended_prices5;
+
+    // Compute tax
+    var tax_rate = 0.0575;
+    var tax = tax_rate * subtotal;
+
+    // Compute total
+    var total = tax + subtotal;
+
+</script>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="2">
+        <tbody>
+            <tr>
+                <th style="text-align: center;" width="43%">Item</th>
+                <th style="text-align: center;" width="11%">quantity</th>
+                <th style="text-align: center;" width="13%">price</th>
+                <th style="text-align: center;" width="54%">extended price</th>
+            </tr>
+            <script>
+                // Product 1
+                document.write(`
+                <tr>
+                    <td width="43%">${item1}</td>
+                    <td align="center" width="11%">${quantity1}</td>
+                    <td width="13%">\$${price1}</td>
+                    <td width="54%">\$${extended_prices1}</td>
+                </tr>
+                `);
+            </script>
+            <script>
+                // Product 2
+                document.write(`
+                    <tr>
+                        <td width="43%">${item2}</td>
+                        <td align="center" width="11%">${quantity2}</td>
+                        <td width="13%">\$${price2}</td>
+                        <td width="54%">\$${extended_prices2}</td>
+                    </tr>
+                    `);
+            </script>
+            <script>
+                // Product 3
+                document.write(`
+                        <tr>
+                            <td width="43%">${item3}</td>
+                            <td align="center" width="11%">${quantity3}</td>
+                            <td width="13%">\$${price3}</td>
+                            <td width="54%">\$${extended_prices3}</td>
+                        </tr>
+                        `);
+            </script>
+            <script>
+                // Product 4
+                document.write(`
+                            <tr>
+                                <td width="43%">${item4}</td>
+                                <td align="center" width="11%">${quantity4}</td>
+                                <td width="13%">\$${price4}</td>
+                                <td width="54%">\$${extended_prices4}</td>
+                            </tr>
+                            `);
+            </script>
+            <script>
+                // Product 5
+                document.write(`
+                                <tr>
+                                    <td width="43%">${item5}</td>
+                                    <td align="center" width="11%">${quantity5}</td>
+                                    <td width="13%">\$${price5}</td>
+                                    <td width="54%">\$${extended_prices5}</td>
+                                </tr>
+                                `);
+            </script>
+            <tr>
+                <td colspan="4" width="100%">&nbsp;</td>
+            </tr>
+            <script>
+                // Subtotal
+                document.write(`
+                <tr>
+                    <td style="text-align: center;" colspan="3" width="67%">Sub-total</td>
+                    <td width="54%">\$${subtotal.toFixed(2)}</td>
+                </tr>
+                `);
+            </script>
+            <script>
+                // Tax
+                document.write(`
+                <tr>
+                    <td style="text-align: center;" colspan="3" width="67%"><span style="font-family: arial;">Tax @
+                        5.75%</span></td>
+                    <td width="54%">\$${tax.toFixed(2)}</td>
+                </tr>
+                `);
+            </script>
+            <script>
+                // Total
+                document.write(`
+                <tr>
+                    <td style="text-align: center;" colspan="3" width="67%"><strong>Total</strong></td>
+                    <td width="54%"><strong>\$${total.toFixed(2)}</strong></td>
+                </tr>
+                `);
+            </script>
+        </tbody>
+    </table>
+</body>
+
+</html>
