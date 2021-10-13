@@ -27,10 +27,10 @@
         for (i = 0; i < product_quantities.length; i++) {
             document.write(`<tr>`);
             document.write(`<td>${products[i].name}</td>`);
-            document.write(`<td>${products[i].price.toFixed(2)}</td>`);
+            document.write(`<td>$ ${products[i].price.toFixed(2)}</td>`);
             document.write(`<td>${product_quantities[i]}</td>`);
             extended = products[i].price * product_quantities[i];
-            document.write(`<td>${extended.toFixed(2)}</td>`);
+            document.write(`<td>$ ${extended.toFixed(2)}</td>`);
             document.write(`</tr>`);
         }
         document.write("</table>");

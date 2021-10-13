@@ -30,20 +30,33 @@
             var board = [row1, row2, row3];
             var marks = ["X","O"];
             var move_num = 0;
+            const re = /^(?:(?:...){0,2}([OX])\1\1|.{0,2}([OX])..\2..\2|([OX])...\3...\3|..([OX]).\4.\4)/g
+            var patt = new RegExp("e");
+            var count = 0;
 
             for (rowNum = 0; rowNum < board.length; rowNum++) {
                 // start new row
                 document.write("<tr>");
                 for (col = 0; col < board[rowNum].length; col++) {
                     // print the cell
-                    document.write(`<td onclick="
+                    document.write(`<td id=${count} onclick="
                         if (this.innerHTML = '-') {
                             this.innerHTML = marks[move_num%2];
+                            row = Math.floor(this.id/3);
+                            col = count % 3;
+                            board[row][col] = marks[move_num%2]; 
+                            move_num++; 
+                            status_div.innerHTML = marks[move_num%2] + ' goes';
+                            board_str = board.map(e => e.join('')).join('');
+                            win = patt.exec(board_str);
+                            if (win != null) {
+                                status_div.innerHTML = win[1];
+                            }
                         } 
                     "">`); 
                     document.write(board[rowNum][col]);
                     document.write("</td>");
-                    move_num++;
+                    count++;
                 }
                 document.write("</tr>");
             }
