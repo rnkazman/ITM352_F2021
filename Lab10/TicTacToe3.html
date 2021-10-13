@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td:hover {
+            background-color: chartreuse;
+        }
+
+        td {
+            height: 25px;
+            width: 20px;
+            text-align: center;
+            cursor: cell;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table border=3>
+        <script>
+            var row1 = ["-", "-", "-"];
+            var row2 = ["-", "-", "-"];
+            var row3 = ["-", "-", "-"];
+            var board = [row1, row2, row3];
+            var marks = ["X","O"];
+            var move_num = 0;
+
+            for (rowNum = 0; rowNum < board.length; rowNum++) {
+                // start new row
+                document.write("<tr>");
+                for (col = 0; col < board[rowNum].length; col++) {
+                    // print the cell
+                    document.write(`<td onclick="
+                        if (this.innerHTML = '-') {
+                            this.innerHTML = marks[move_num%2];
+                        } 
+                    "">`); 
+                    document.write(board[rowNum][col]);
+                    document.write("</td>");
+                    move_num++;
+                }
+                document.write("</tr>");
+            }
+
+        </script>
+
+    </table>
+    <div id=status_div>
+        X goes first
+    </div>
+</body>
+
+</html>

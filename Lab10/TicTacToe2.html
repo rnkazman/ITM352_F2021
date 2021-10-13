@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table border=3>
+    <script>
+
+    // var board = [["x", "x", "o"], ["x", "o", "o"], ["o", "x", "x"]];
+    var row1 = ["x", "x", "o"];
+    var row2 = ["x", "o", "o"];
+    var row3 = ["o", "x", "x"];
+    var board = [row1, row2, row3];
+
+    
+    for (rowNum = 0; rowNum < board.length; rowNum++) {
+        // start new row
+        document.write("<tr>");
+        for (col = 0; col < board[rowNum].length; col++) {
+            // print the cell
+            document.write("<td>" + board[rowNum][col] + "</td>");
+        }
+        document.write("</tr>");
+    }
+
+    </script>
+
+    </table>
+</body>
+</html>
