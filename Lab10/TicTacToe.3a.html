@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td:hover {
+            background-color: chartreuse;
+        }
+    
+        td {
+            height: 25px;
+            width: 20px;
+            text-align: center;
+            cursor: cell;
+        }
+    </style>
+</head>
+<body>
+    
+    <table border="1">
+        <tbody>
+            <script>
+                tictactoe = [["-", "-", "-"], ["-", "-", "-"], ["-", "-", "-"]];
+                const re = /^(?:(?:...){0,2}([OX])\1\1|.{0,2}([OX])..\2..\2|([OX])...\3...\3|..([OX]).\4.\4)/g
+                for (row in tictactoe) {
+                    document.write(`<tr>`);
+                    for (col in tictactoe[row]) {
+                        document.write(`<td 
+                onclick="
+                if(this.innerHTML == '-' && win == null) { 
+                    mark=marks[mark_index%2];
+                    tictactoe[${row}][${col}]=mark;
+                    this.innerHTML=mark;
+                    str = tictactoe.map(e => e.join('')).join('')
+                    win = re.exec(str);
+                   if(win != null) {win.shift(); win_div.innerHTML = (win.join('') + ' wins in ' + (mark_index + 1) + ' moves!');}
+                   else if((mark_index + 1) == 9) {win_div.innerHTML = 'Cats Game!';}
+                   else {win_div.innerHTML = marks[(++mark_index)%2] + ' goes'};
+                }
+                    "
+                >${tictactoe[row][col]}</td>`);
+                    }
+                    document.write(`</tr>`);
+                }
+            </script>
+        </tbody>
+    </table>
+    <div id="win_div"></div>
+    <script>
+        marks = ["X", "O"];
+        mark_index = 0;
+        win_div.innerHTML = `${marks[mark_index]} goes`;
+        win = null;
+    </script>
+</body>
+</html>
