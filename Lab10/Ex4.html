@@ -18,7 +18,7 @@
         new_row = this.appendChild(document.createElement('tr'));
 
         for (i=1; i <= this.rows[0].cells.length; i++) {
-            new_cell = this.appendChild(document.createElement('td'));
+            new_cell = new_row.appendChild(document.createElement('td'));
             new_cell.innerHTML = 'xxx';
         }
         ">
