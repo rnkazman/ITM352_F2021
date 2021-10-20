@@ -40,9 +40,10 @@
         }
 
         pieces.forEach(checkIt);
-
+ 
+        console.log ("==========");
         pieces.forEach( (elem,index) => {
-            console.log(`part ${index} is ${(isNonNegInt(elem)?'a':'not a')} quantity`);
+            console.log(`${index}: ${elem} is ${(isNonNegInt(elem)?'a':'not a')} valid quantity`);
         } )
 
         console.log("50 F =", convertTemperature(50,"F"));
