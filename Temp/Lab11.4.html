@@ -35,14 +35,14 @@
             return returnErrors ? errors : (errors.length == 0)
         }
 
-        function checkIt(item,index) {
-            console.log(`part ${index} is ${(isNonNegInt(item)?'a':'not a')} quantity`);
+        function checkIt(elem,index) {
+            console.log(`part ${index} is ${(isNonNegInt(elem)?'a':'not a')} quantity`);
         }
 
         pieces.forEach(checkIt);
 
-        pieces.forEach( (item,index) => {
-            console.log(`part ${index} is ${(isNonNegInt(item)?'a':'not a')} quantity`);
+        pieces.forEach( (elem,index) => {
+            console.log(`part ${index} is ${(isNonNegInt(elem)?'a':'not a')} quantity`);
         } )
 
         console.log("50 F =", convertTemperature(50,"F"));
