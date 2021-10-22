@@ -28,7 +28,7 @@
         }
 
         function checkQuantityTextbox() {
-            var errors = isNonNegativeInteger(document.getElementById("quantity_textbox").value, true);
+            var errors = isNonNegativeInteger(quantity_textbox.value, true);
             qty_textbox_message.innerHTML = errors.join(" / ");
         }
     </script>
