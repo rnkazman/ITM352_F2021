@@ -8,12 +8,44 @@
 </head>
 <body>
     <script>
+        function isNonNegativeInteger(inputString, returnErrors = false) {
+            // Validate that an input value is a non-negative integer
+            // inputString is the input string; returnErrors indicates how the function returns: true means return the
+            // array and false means return a boolean.
+
+            errors = []; // assume no errors at first
+
+            if (Number(inputString) != inputString) {
+                errors.push('Not a number!'); // Check if string is a number value
+            }
+            else {
+                if (inputString < 0) errors.push('Negative value!'); // Check if it is non-negative
+                if (parseInt(inputString) != inputString) errors.push('Not an integer!'); // Check that it is an integer
+            }
+            return returnErrors ? errors : (errors.length == 0);
+
+        }
+
         let params = (new URL(document.location)).searchParams;
 
         // Check if the textbox exists
-        if (params.has('quantity_textbox')) {
-            document.body.innerHTML = `Thank you for ordering ${params.get('quantity_textbox')} things!`;
+        if( params.has('quantity_textbox') ) { 
+            // is the quanity valid? If so, print purchase. If not, give error
+            if(isNonNegativeInteger(params.get('quantity_textbox'))) {
+                 document.body.innerHTML = `Thank for you for ordering ${params.get('quantity_textbox')} items`;
+            } else {
+                document.body.innerHTML = `Invalid quantity bozo - press Back and try again`;
+                //window.location.href = "order_page.html" + document.location.search;
+            }
         }
+       /* if (params.has('quantity_textbox')) {
+            retVal = isNonNegativeInteger(params.get('quantity_textbox'));
+            if (retVal) {
+                document.body.innerHTML = `Thank you for ordering ${params.get('quantity_textbox')} things!`;
+            } else {
+                // document.body.innerHTML = `Invalid quantity stoopid. Press the back button and try again.`;
+            }
+        }*/
     </script>
 </body>
 </html>
