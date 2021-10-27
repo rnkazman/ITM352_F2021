@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      background: orange;
+    }
+  </style>
+  <title>Example Form</title>
+</head>
+
+<body>
+
+  <script>
+    let params = (new URL(document.location)).searchParams;
+
+    function ShowIt(elem, index) {
+      document.body.innerHTML += `${index}: ${elem} <BR>`;
+    }
+    params.forEach(ShowIt);
+  </script>
+
+  <form method="GET" action="">
+    <h1>
+      Welcome to the World of Fruit
+    </h1>
+    <label for="name">Name</label>
+    <div>
+      <input type="text" name="name" id="name" value="">
+    </div>
+
+    <label for="address">Address</label>
+    <div>
+      <input type="text" name="address" id="address" value="">
+    </div>
+
+    <label for="email">Email</label>
+    <div>
+      <input type="text" name="email" id="email" value="">
+    </div>
+    <br>
+    How many fruits do you eat each day?
+    <br>
+    <label>
+      <input type="radio" name="howMany" value="zero"> 0
+    </label>
+    <label>
+      <input type="radio" name="howMany" value="one"> 1
+    </label>
+    <label>
+      <input type="radio" name="howMany" value="two"> 2
+    </label>
+    <label>
+      <input type="radio" name="howMany" value="twoplus"> More than 2
+    </label>
+    <br>
+    <label for="favoriteFruit">My favorite fruit</label>
+    <div>
+      <select name="favoriteFruit[]" id="favoriteFruit" size="4" multiple="">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="plum">Plum</option>
+        <option value="pomegranate">Pomegranate</option>
+        <option value="strawberry">Strawberry</option>
+        <option value="watermelon">Watermelon</option>
+      </select>
+    </div>
+    <br>
+    <label for="brochure">Would you like a brochure?</label>
+    <div>
+      <input type="checkbox" name="brochure" id="brochure" value="Yes">
+    </div>
+    <br>
+    <div>
+      <input type="submit" name="submit" value="Submit">
+    </div>
+
+  </form>
+</body>
+
+</html>
