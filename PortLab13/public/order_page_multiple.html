@@ -18,25 +18,25 @@
             return returnErrors ? errors : (errors.length == 0);
         }
 
-        function checkQuantityTextbox() {
-            errs = isNonNegInt(quantity_form.quantity_textbox.value, true);
-            quantity_textbox_message.innerHTML = errs.join(", ");
+        function checkQuantityTextbox(theTextbox) {
+            errs = isNonNegInt(theTextbox.value, true);
+            document.getElementById(theTextbox.name + '_message').innerHTML = errs.join(", ");
         }
     </script>
 </head>
 
 <body>
-    <form name='quantity_form' action="./process_form" method="POST">
+    <form name='quantity_form' action="process_form" method="POST">
         <script>
             for (i in products) {
-                document.write(`<h4>${products[i]["total_sold"]} ${products[i]["brand"]} have been sold!</h4>`);
-            }
-
-            document.write(`<h3>${products[0]["brand"]} at \$${products[0]["price"]}</h3>`);
-        </script>
+                document.write(`<h3>${products[i]["brand"]} at \$${products[i]["price"]} (${products[i]["total_sold"]} sold)</h3>`);
+                document.write(`
         <label for="quantity_textbox">quantity desired:</label>
-        <input type="text" name="quantity_textbox" onkeyup="checkQuantityTextbox();">
-        <span id="quantity_textbox_message">Enter a quantity</span>
+        <input type="text" name="quantity_textbox[${i}]" onkeyup="checkQuantityTextbox(this);">
+        <span id="quantity_textbox[${i}]_message">Enter a quantity</span>
+        `);
+            }
+        </script>
         <br>
         <input type="submit" value='Purchase'>
     </form>

@@ -17,8 +17,8 @@ app.get("/product_data.js", function (request, response, next) {
 
 app.use(express.urlencoded({ extended: true }));
 app.post("/process_form", function (request, response) {
-    let model = products[0]['model'];
-    let model_price = products[0]['price'];
+    let brand = products[0]['brand'];
+    let brand_price = products[0]['price'];
     var q = request.body['quantity_textbox'];
     if (typeof q != 'undefined') {
         if(isNonNegInt(q)) { 
