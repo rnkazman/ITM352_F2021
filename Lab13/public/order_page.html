@@ -51,10 +51,10 @@
                 document.body.innerHTML = `Invalid quantity bozo - try again`;
             }
         }
-        /*if (params.has('error')) {
+        if (params.has('error')) {
             err_message = params.get('error')
             alert(err_message);
-        }*/
+        }
     </script>
 
     <form name="quantity_form" action="/process_form" method="POST">
@@ -71,10 +71,6 @@
             if (params.has('quantity_textbox')) {
                 textbox_value = params.get('quantity_textbox');
                 quantity_form.quantity_textbox.value = textbox_value;
-            }
-            if (params.has('error')) {
-                err_message = params.get('error')
-                alert(err_message);
             }
         </script>
         <input type="submit" value="Purchase">
