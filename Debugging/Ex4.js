@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
-var myParser = require("body-parser");
+app.use(express.urlencoded({extended: true}));
+
 
 // Route to handle any request
 app.all('*', function (request, response, next) {
