@@ -26,7 +26,7 @@ app.get("/login", function (request, response) {
     // Give a simple login form
     str = `
 <body>
-<form action="" method="POST">
+<form action="/login" method="POST">
 <input type="text" name="username" size="40" placeholder="enter username" ><br />
 <input type="password" name="password" size="40" placeholder="enter password"><br />
 <input type="submit" value="Submit" id="submit">
@@ -89,6 +89,7 @@ app.post("/register", function (request, response) {
     user_name = POST["username"];
     user_pass = POST["password"];
     user_email = POST["email"];
+    user_pass2 = POST["repeat_password"];
     query_response = "";
 
     if (user_data[user_name] == undefined) {
