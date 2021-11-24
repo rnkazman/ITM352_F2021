@@ -24,8 +24,7 @@ if (fs.existsSync(filename)) {
 
 app.get("/login", function (request, response) {
     // Give a simple login form
-    str = `
-<body>
+    str = `<body>
 <form action="/login" method="POST">
 <input type="text" name="username" size="40" placeholder="enter username" ><br />
 <input type="password" name="password" size="40" placeholder="enter password"><br />
@@ -44,7 +43,6 @@ app.post("/login", function (request, response) {
     user_name = POST["username"];
     user_pass = POST["password"];
     console.log("User name=" + user_name + " password=" + user_pass);
-
     if (user_data[user_name] != undefined) {
         if (user_data[user_name].password == user_pass) {
             // Good login
@@ -62,8 +60,7 @@ app.post("/login", function (request, response) {
 
 app.get("/register", function (request, response) {
     // Give a simple register form
-    str = `
-<body>
+    str = `<body>
 <form action="/register" method="POST">`;
     if (request.query["name_err"] == undefined) {
         str += `<input type="text" name="username" size="40" placeholder="enter username" ><br>`;
