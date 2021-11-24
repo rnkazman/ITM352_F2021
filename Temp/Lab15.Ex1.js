@@ -27,8 +27,6 @@ app.get("/set_cookie", function (request, response) {
     my_name = "Rick Kazman";
     now = new Date();
     response.cookie('My Name', my_name, {maxAge: 5000}).send('cookie set');
-    //response.cookie('My Name', my_name, {"expire": 5000 + now.getTime()});
-    //response.send("Cookie sent");
 });
 
 app.get("/use_cookie", function (request, response) {
