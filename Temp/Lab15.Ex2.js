@@ -29,7 +29,6 @@ if (fs.existsSync(filename)) {
 app.get('/', function (request, response) {
     if (request.session.page_views) {
         request.session.page_views++;
-        //console.log(request.session);
 
         if (typeof request.cookies["username"] != undefined) {
             console.log("Got user cookie " + request.cookies["username"]);
@@ -52,8 +51,6 @@ app.get("/set_cookie", function (request, response) {
     my_name = "Rick Kazman";
     now = new Date();
     response.cookie('My Name', my_name, {maxAge: 5000}).send('cookie set');
-    //response.cookie('My Name', my_name, {"expire": 5000 + now.getTime()});
-    //response.send("Cookie sent");
 });
 
 app.get("/use_cookie", function (request, response) {
@@ -65,7 +62,7 @@ app.get("/use_session", function (request, response) {
     response.send("Your session ID is " + request.session.id);
 });
 
-    // Simple example of destroying a session 
+// Simple example of destroying a session 
 app.get("/destroy_session", function (request, response) {
     request.session.destroy();
     response.send("Session nuked!");
@@ -79,8 +76,7 @@ app.get("/login", function (request, response) {
     } else {
         last_login = "First login";
     }
-    str = `
-<body>
+    str = `<body>
 Last login: ${last_login}
 <br>
 <form action="/login" method="POST">
@@ -88,8 +84,7 @@ Last login: ${last_login}
 <input type="password" name="password" size="40" placeholder="enter password"><br />
 <input type="submit" value="Submit" id="submit">
 </form>
-</body>
-    `;
+</body> `;
     response.send(str);
 });
 
@@ -110,12 +105,10 @@ app.post("/login", function (request, response) {
             response.cookie("username", user_name, {"maxAge": 10*1000});
             request.session.username = user_name;
             response.send(`Welcome ${user_name}`);
-        } else {
-            // Bad login, redirect
+        } else {  // Bad login, redirect
             response.send("Sorry bud");
         }
-    } else {
-        // Bad username
+    } else {  // Bad username
         response.send("Bad username");
     }
 
@@ -123,8 +116,7 @@ app.post("/login", function (request, response) {
 
 app.get("/register", function (request, response) {
     // Give a simple register form
-    str = `
-<body>
+    str = `<body>
 <form action="/register" method="POST">`;
     if (request.query["name_err"] == undefined) {
         str += `<input type="text" name="username" size="40" placeholder="enter username" ><br>`;
@@ -137,8 +129,7 @@ app.get("/register", function (request, response) {
 <input type="email" name="email" size="40" placeholder="enter email"><br>
 <input type="submit" value="Submit" id="submit">
 </form> 
-</body>
-    `;
+</body> `;
     response.send(str);
 });
 
@@ -163,7 +154,6 @@ app.post("/register", function (request, response) {
 
         data = JSON.stringify(user_data);
         fs.writeFileSync(filename, data, "utf-8");
-
         response.redirect("login");
     } else {
         query_response += "name_err=" + user_name;

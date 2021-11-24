@@ -36,15 +36,13 @@ app.get("/use_cookie", function (request, response) {
 
 app.get("/login", function (request, response) {
     // Give a simple login form
-    str = `
-<body>
+    str = `<body>
 <form action="/login" method="POST">
 <input type="text" name="username" size="40" placeholder="enter username" ><br />
 <input type="password" name="password" size="40" placeholder="enter password"><br />
 <input type="submit" value="Submit" id="submit">
 </form>
-</body>
-    `;
+</body>   `;
     response.send(str);
 });
 
@@ -88,8 +86,7 @@ app.get("/register", function (request, response) {
 <input type="email" name="email" size="40" placeholder="enter email"><br>
 <input type="submit" value="Submit" id="submit">
 </form> 
-</body>
-    `;
+</body>`;
     response.send(str);
 });
 
