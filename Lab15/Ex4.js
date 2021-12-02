@@ -19,6 +19,8 @@ app.use(cookieParser());
 app.use(myParser.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
+var num_users = 0;  // Total number of users on the site
+
 if (fs.existsSync(filename)) {
     data = fs.readFileSync(filename, 'utf-8');
 
@@ -80,6 +82,14 @@ app.get("/fav_color", function (request, response) {
 });
 
 
+app.get("/logout", function (request, response) {
+    num_users--;
+    request.session.destroy();
+    response.cookie("username", "", {maxAge: 1000});
+
+    response.send("Thanks for shopping with us!");
+}
+);
 app.post("/fav_color", function (request, response) {
     var POST = request.body;
     request.session.fav_color = POST["color"];
@@ -97,7 +107,7 @@ app.get("/login", function (request, response) {
     my_cookie_name = request.cookies["username"];
 
     str = `<body>
-    Login info: ${login_time} by ${my_cookie_name}
+    Login info: ${login_time} by ${my_cookie_name} Total users: ${num_users}
 <form action="/login" method="POST">
 <input type="text" name="username" size="40" placeholder="enter username" ><br />
 <input type="password" name="password" size="40" placeholder="enter password"><br />
@@ -125,6 +135,7 @@ app.post("/login", function (request, response) {
         request.session.last_login = now;
         request.session.fav_color = POST["color"];
         response.cookie('username', user_name_from_form).send(`${msg} <BR>${user_name_from_form} logged in: ${now}`);
+        num_users++;
     } else {
         response.send(`Sorry Charlie!`);
     }
@@ -202,7 +213,7 @@ app.post("/register", function (request, response) {
         user_data[user_name].password = user_pass;
         user_data[user_name].email = user_email;
 
-        data = JSON.stringify(user_data);
+        data = "JSON.stringify(user_data)";
         fs.writeFileSync(filename, data, "utf-8");
 
         response.redirect("login");
