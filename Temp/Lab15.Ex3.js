@@ -42,24 +42,44 @@ app.get("/", function (request, response) {
 }
 );
 
-app.get("/set_cookie", function (request, response) {
-    my_name = "Rick Kazman";
 
-    response.cookie("My Name", my_name, {maxAge: 8000}).send("Cookie sent");
+app.get("/set_color", function (request, response) {
+    str = `<body>
+<form action="/set_color" method="POST">
+<input type="text" name="color" size="20" placeholder="enter fav color"><br />
+<input type="submit" value="Submit" id="submit">
+</form>
+</body>
+    `;
+    response.send(str);
+});
+
+app.post("/set_color", function (request, response) {
+    request.session.fav_color = request.body["color"];
+    response.send("Favorite color is: " + request.session.fav_color);
 }
 );
 
-app.get("/get_cookie", function (request, response) {
-    //console.log("Cookies=" + request.cookies);
-    my_cookie_name = request.cookies["My Name"];
-    response.send("User " + my_cookie_name + " recognized");
+// Get the value of the current color cookie
+app.get("/get_color", function (request, response) {
+    response.send("Favorite color is: " + request.session.fav_color + " " + Date.now()) ;
 }
 );
+
+// Log out the user.  Destroy the cookie.
+app.get("/logout", function (request, response) {
+    user_cookie = request.cookies["username"];
+    response.cookie('username', user_cookie, {maxAge: 1000});
+    response.send("User " + user_cookie + " logged out");
+}
+);
+
 
 app.get('/set_session', function (req, res, next) {
     res.send(`welcome, your session ID is ${req.session.id}`);
     next();
 });
+
 
 app.get("/use_session", function (request, response) {
     response.send("Your session ID is " + request.session.id);
@@ -81,7 +101,6 @@ app.get("/login", function (request, response) {
 <form action="/login" method="POST">
 <input type="text" name="username" size="40" placeholder="enter username" ><br />
 <input type="password" name="password" size="40" placeholder="enter password"><br />
-<input type="text" name="color" size="20" placeholder="enter fav color"><br />
 <input type="submit" value="Submit" id="submit">
 </form>
 </body>
@@ -92,57 +111,23 @@ app.get("/login", function (request, response) {
 
 app.post("/login", function (request, response) {
     // Process login form POST and redirect to logged in page if ok, back to login page if not
-    POST = request.body;
-    user_name_from_form = POST["username"];
+    user_name_from_form = request.body["username"];
     if (user_data[user_name_from_form] != undefined) {
         if (typeof request.session.last_login != 'undefined')
         {
-            var msg = `You last logged in: ${request.session.last_login}. Your fav color is ${POST["color"]}`;
+            var msg = `You last logged in: ${request.session.last_login}.`;
             var now = new Date();
         } else {
             var msg = '';
             var now = 'first visit';
         }
         request.session.last_login = now;
-        request.session.fav_color = POST["color"];
         response.cookie('username', user_name_from_form).send(`${msg} <BR>${user_name_from_form} logged in: ${now}`);
     } else {
         response.send(`Sorry Charlie!`);
     }
 });
 
-app.get("/fav_color", function (request, response) {
-    response.send("Favorite color is: " + request.session.fav_color);
-}
-);
-
-/*
-app.post("/login", function (request, response) {
-    // Process login form POST and redirect to logged in page if ok, back to login page if not
-    console.log("Got a POST to login");
-    POST = request.body;
-
-    user_name = POST["username"];
-    user_pass = POST["password"];
-    console.log("User name=" + user_name + " password=" + user_pass);
-    if (user_data[user_name] != undefined) {
-        if (user_data[user_name].password == user_pass) {
-            // Good login
-            request.session['last_login'] = Date();
-            response.cookie("username", user_name, {"maxAge": 10*1000});
-            request.session['username'] = user_name;
-            response.send("Welcome " + user_name);
-        } else {
-            // Bad login, redirect
-            response.send("Sorry bud");
-        }
-    } else {
-        // Bad username
-        response.send("Bad username");
-    }
-
-});
-*/
 
 app.get("/register", function (request, response) {
     // Give a simple register form

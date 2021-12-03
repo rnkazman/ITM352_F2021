@@ -1,0 +1,44 @@
+{ 
+    "gumballs":[ 
+        {
+            "name": "small gumball",
+            "price": 0.1
+        },
+        {
+            "name": "med gumball",
+            "price": 0.05
+        },
+        {
+            "name": "large gumball",
+            "price": 0.25
+        }
+    ],
+    "jawbreakers": [ 
+        {
+            "name": "small jawbreaker",
+            "price": 0.10
+        },
+        {
+            "name": "med jawbreaker",
+            "price": 0.15
+        },
+        {
+            "name": "large jawbreaker",
+            "price": 0.35
+        }
+    ],
+    "peanut butter cups": [
+        {
+            "name": "small peanut butter cup",
+            "price": 0.50
+        },
+        {
+            "name": "med peanut butter cup",
+            "price": 0.60
+        },
+        {
+            "name": "large peanut butter cup",
+            "price": 0.75
+        }
+    ]
+}

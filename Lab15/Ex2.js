@@ -81,7 +81,6 @@ app.get("/login", function (request, response) {
 <form action="/login" method="POST">
 <input type="text" name="username" size="40" placeholder="enter username" ><br />
 <input type="password" name="password" size="40" placeholder="enter password"><br />
-<input type="text" name="color" size="20" placeholder="enter fav color"><br />
 <input type="submit" value="Submit" id="submit">
 </form>
 </body>
@@ -90,33 +89,6 @@ app.get("/login", function (request, response) {
 });
 
 
-app.post("/login", function (request, response) {
-    // Process login form POST and redirect to logged in page if ok, back to login page if not
-    POST = request.body;
-    user_name_from_form = POST["username"];
-    if (user_data[user_name_from_form] != undefined) {
-        if (typeof request.session.last_login != 'undefined')
-        {
-            var msg = `You last logged in: ${request.session.last_login}. Your fav color is ${POST["color"]}`;
-            var now = new Date();
-        } else {
-            var msg = '';
-            var now = 'first visit';
-        }
-        request.session.last_login = now;
-        request.session.fav_color = POST["color"];
-        response.cookie('username', user_name_from_form).send(`${msg} <BR>${user_name_from_form} logged in: ${now}`);
-    } else {
-        response.send(`Sorry Charlie!`);
-    }
-});
-
-app.get("/fav_color", function (request, response) {
-    response.send("Favorite color is: " + request.session.fav_color);
-}
-);
-
-/*
 app.post("/login", function (request, response) {
     // Process login form POST and redirect to logged in page if ok, back to login page if not
     console.log("Got a POST to login");
@@ -142,7 +114,7 @@ app.post("/login", function (request, response) {
     }
 
 });
-*/
+
 
 app.get("/register", function (request, response) {
     // Give a simple register form

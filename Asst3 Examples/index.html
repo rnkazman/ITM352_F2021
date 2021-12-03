@@ -1,0 +1,16 @@
+<head>
+    <script src="./functions.js"></script> 
+    <script>
+    var products_data;
+    loadJSON('get_products_data', function(response) {
+         // Parsing JSON string into object
+         products_data = JSON.parse(response);
+    });
+    var this_product_key = ''
+    </script>
+</head>
+    <body>
+        Go to: <br>
+    <script> nav_bar(this_product_key, products_data);</script>
+    </body>
+    </html>
