@@ -27,7 +27,7 @@
     // This function takes a string assumed to be a key in the products array above to display and select the corresponding products
     var order_str = '';
     // get the particular products to display
-    products = products_data[products_key];
+    products = products_data[this_products_key];
     if (params.has('Submit')) {
         // grab the quantities from the query string
         order_str = 'Your order is:<br>';
